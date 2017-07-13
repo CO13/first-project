@@ -1,0 +1,20 @@
+//- header#header
+//- 	.container-fluid
+//- 		.row.align-items-center
+//- 			.col-lg-5
+//- 				a.logo(href="index.html")
+//- 					img(src="img/logo.png")
+//- 			.col-lg-7
+//- 				ul.nav-top
+//- 					li.nav-p__item
+//- 						a.nav-p__link.active(href='products.html') Search
+//- 					li.nav-p__item
+//- 						a.nav-p__link(href='models.html') Forecast Models
+header.header
+	a(href='#/', ng-click="trackEvent('header-home')")
+		img.header-logo(src='img/header/swoosh.svg', alt='Nike')
+	nav.header-links
+	.header-account
+		a(href="#") Log in
+		a(href='#/cart', ng-click="trackEvent('header-cart')")
+			img.header-cart(src='img/header/icon-cart.svg', alt='Shopping Cart')

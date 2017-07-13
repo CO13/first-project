@@ -4,12 +4,25 @@ var gulp        = require('gulp'),
     watch       = require('gulp-watch'),
     uglify      = require('gulp-uglify'),
     sass        = require('gulp-sass'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    rigger      = require('gulp-rigger'),
     sorter      = require('css-declaration-sorter'),
     concat      = require('gulp-concat'),
     imagemin    = require('gulp-imagemin'),
     browserSync = require("browser-sync"),
     jade        = require('gulp-jade'),
+    plumber     = require('gulp-plumber'),
     reload      = browserSync.reload;
+
+    var config = {
+	      server: {
+	          baseDir: ""
+	      },
+	      tunnel: true,
+	      host: 'localhost',
+	      port: 9000,
+	      logPrefix: "Frontend_Devil"
+	  };
 
     var path = {
         build: { //Тут мы укажем куда складывать готовые после сборки файлы
@@ -24,8 +37,7 @@ var gulp        = require('gulp'),
                 'assets/js/source/*.js'
             ],
             style: [
-              'assets/css/source/*.scss',
-              'assets/css/source/**/*.scss'
+              'assets/css/source/*.scss'
             ],
             img:   'assets/images/source*.*'
         },
@@ -53,5 +65,34 @@ var gulp        = require('gulp'),
         .pipe(gulp.dest('./css'));
     });
 
+    gulp.task('style:build', function () {
+	    gulp.src(path.src.style) //Выберем наш main.scss
+	          .pipe(sourcemaps.init()) //То же самое что и с js
+	          .pipe(sass()) //Скомпилируем
+	          //.pipe(prefixer()) //Добавим вендорные префиксы
+	          //.pipe(cssmin()) //Сожмем
+	          .pipe(sourcemaps.write())
+	          .pipe(gulp.dest(path.build.css)) //И в build
+	          .pipe(reload({stream: true}));
+	});
 
+    gulp.task('build', [
+        'html:build',
+        'style:build',
+    ]);
+
+    gulp.task('watch', function(){
+      watch([path.watch.html], function(event, cb) {
+          gulp.start('html:build');
+      });
+      watch([path.watch.style], function(event, cb) {
+          gulp.start('style:build');
+      });
+  	});
+
+  	gulp.task('webserver', function () {
+	    browserSync(config);
+	});
+
+	gulp.task('default', ['build', 'webserver', 'watch']);
     //gulp.task('default', ['build', 'webserver', 'watch']);

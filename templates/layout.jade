@@ -1,0 +1,20 @@
+doctype html
+html
+	head
+		meta(http-equiv="content-type" content="text/html; charset=utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet", href="css/style.css")
+	body
+		include ./template-parts/header.jade
+
+		block content
+		
+		include ./template-parts/footer.jade
+		
+		script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" )
+		script(src="js/bootstrap.min.js")
+		script(src="js/slick.min.js")
+		script(src="js/jquery.mousewheel.js")
+		script(src="js/jquery.jscrollpane.js")
+		script(src="js/script.js")

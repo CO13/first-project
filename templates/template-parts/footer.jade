@@ -1,0 +1,8 @@
+footer.footer
+	.footer-nav
+		a.footer-link(href='', ng-click="$root.modal.contact = !$root.modal.contact; trackEvent('footer-contact')") Contact
+		a.footer-link(href='http://www.nike.com/us/en_us/sfg/mens-tops-sizing-chart', ng-click="trackEvent('footer-sizing')") Sizing Information
+		a.footer-link(href='', ng-click="$root.modal.care = !$root.modal.care; trackEvent('footer-care');") Care Instructions
+		a.footer-link(href='', ng-click="$root.modal.orderstatus = !$root.modal.orderstatus; trackEvent('footer-orderstatus')") Order Status & Returns
+		a.footer-link(href='http://www.nike.com/', ng-click="trackEvent('footer-store')") Nike Store
+	p.footer-legal © 2017 Nike, Inc. All Rights Reserved

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="header"><a href="#/" ng-click="trackEvent('header-home')"><img src="img/header/swoosh.svg" alt="Nike" class="header-logo"></a>
+      <nav class="header-links"></nav>
+      <div class="header-account"><a href="#">Log in</a><a href="#/cart" ng-click="trackEvent('header-cart')"><img src="img/header/icon-cart.svg" alt="Shopping Cart" class="header-cart"></a></div>
+    </header>
+    <footer class="footer">
+      <div class="footer-nav"><a href="" ng-click="$root.modal.contact = !$root.modal.contact; trackEvent('footer-contact')" class="footer-link">Contact</a><a href="http://www.nike.com/us/en_us/sfg/mens-tops-sizing-chart" ng-click="trackEvent('footer-sizing')" class="footer-link">Sizing Information</a><a href="" ng-click="$root.modal.care = !$root.modal.care; trackEvent('footer-care');" class="footer-link">Care Instructions</a><a href="" ng-click="$root.modal.orderstatus = !$root.modal.orderstatus; trackEvent('footer-orderstatus')" class="footer-link">Order Status & Returns</a><a href="http://www.nike.com/" ng-click="trackEvent('footer-store')" class="footer-link">Nike Store</a></div>
+      <p class="footer-legal">© 2017 Nike, Inc. All Rights Reserved</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.jscrollpane.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
