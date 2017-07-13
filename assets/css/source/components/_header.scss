@@ -1,3 +1,46 @@
+html {
+	font-size: 15px;
+}
 .navbar {
 	background-color: $blue;
+}
+.md-nav {
+	padding: 0;
+	border-radius: 2px;
+	.navbar-collapse {
+		justify-content: center;
+	}
+
+	.nav {
+		li {
+			a {
+				padding: 0 25px;
+				display: flex;
+				align-items: center;
+				color: $white;
+				text-transform: uppercase;
+				height: 45px;
+				font-size: 14px;
+
+				&:hover,&.active {
+					text-decoration: none;
+					background-color: $green;
+				}
+			}
+		}
+	}
+}
+.md-search {
+	position: relative;
+	.form-control {
+		width: 100%;
+		border-width: 1px;
+	}
+	.btn {
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 99;
+		border-width: 1px !important;
+	}
 }

@@ -11,28 +11,37 @@ header.header
 			.col-lg-5
 
 				.row
+					
 					.col-xl-6
 
-						a.phone(href='tel:+3432007577') (343) 200-75-77
+						
 					// 
 
 					.col-xl-6
 
-						button.btn(type='button', data-toggle='modal', data-target='#callback') Заказать звонок
+						a.phone(href='#') (343) 200-75-77
 					// 
 
 				.form-search
+
 					form(action='', method='post')
-						input(type='text', name='name', placeholder='Ваше имя*', required='')
-						button.btn.btn-primary(type='submit')
+
+						.input-group.md-search
+
+							input.form-control(type='text', name='search', placeholder='', required='')
+
+							button.btn.btn-primary(type='submit') s
+
+				//.form-search
 			// 
-			.col-md-4
+			.col-lg-3
+
 				a.header-cart(href='')
 					span 15
 			// 
 	
-	nav.navbar.navbar-toggleable-sm
-		.container
+		nav.navbar.navbar-toggleable-sm.md-nav
+
 			.navbar-header
 				button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbar', aria-controls='navbar', aria-expanded='false')
 					span
@@ -40,21 +49,32 @@ header.header
 					span
 
 			#navbar.collapse.navbar-collapse
+
 				ul.nav.navbar-nav
+
 					li
-						a(href='') Главная
+						a(href='#') О нас
+
 					li
-						a(href='') О компании
+						a(href='#') Гарантии
+
 					li
-						a(href='') Каталог саженцев
+						a.active(href='#') Схемы лечения
+
 					li
-						a(href='') Наши работы s
+						a(href='#') Сертификаты
+
 					li
-						a(href='') Отзывы
+						a(href='#') Доставка и оплата
+
 					li
-						a(href='') Статьи
+						a(href='#') Отзывы
+
 					li
-						a(href='') Контакты
-		// container
+						a(href='#') Вопрос-ответ
+
+					li
+						a(href='#') Контакты
+			
 
 //.header

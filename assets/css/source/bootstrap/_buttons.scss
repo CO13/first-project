@@ -13,7 +13,9 @@
   vertical-align: middle;
   user-select: none;
   border: $input-btn-border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+  text-transform: uppercase;
+  cursor: pointer;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-sm, $btn-border-radius);
   @include transition($btn-transition);
 
   // Share hover and focus styles
@@ -138,7 +140,7 @@ fieldset[disabled] a.btn {
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-sm, $btn-border-radius-lg);
 }
 .btn-sm {
   // line-height: ensure proper height of button next to small input

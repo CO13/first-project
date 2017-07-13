@@ -1,14 +1,28 @@
 
 .footer {
 	background-color: #2b2a29;
+	padding-top: 40px;
+	
+	&-title {
+		font-size: 18px;
+		color: $white;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+	}
 }
+
 .footer-menu {
 	list-style: none;
 	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
 
 	li {
+		margin-bottom: 10px;
+		width: 50%;
 		a {
-			&:hover {
+			font-family: 'Roboto-Light';
+			&:hover,&.active {
 				color: $green;
 				text-decoration: none;
 			}
