@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Exo2-Bold";
+    src: url('../fonts/Exo2-Bold.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Exo2-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/Exo2-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/Exo2-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../fonts/Exo2-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto-Light";
+    src: url('../fonts/Roboto-Light.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Roboto-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/Roboto-Light.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/Roboto-Light.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../fonts/Roboto-Light.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal;
+    font-style: normal;
+}

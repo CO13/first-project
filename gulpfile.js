@@ -2,36 +2,41 @@
 
 var gulp        = require('gulp'),
     watch       = require('gulp-watch'),
+    prefixer    = require('gulp-autoprefixer'),
     uglify      = require('gulp-uglify'),
     sass        = require('gulp-sass'),
     sourcemaps  = require('gulp-sourcemaps'),
     rigger      = require('gulp-rigger'),
-    sorter      = require('css-declaration-sorter'),
+    gulpPostcss = require('gulp-postcss'),
+    cssdeclsort = require('css-declaration-sorter'),
+    cssbeautify = require('gulp-cssbeautify'),
     concat      = require('gulp-concat'),
     imagemin    = require('gulp-imagemin'),
-    browserSync = require("browser-sync"),
+    pngquant    = require('imagemin-pngquant'),
     jade        = require('gulp-jade'),
     plumber     = require('gulp-plumber'),
+    rimraf      = require('rimraf'),
+    browserSync = require("browser-sync"),
     reload      = browserSync.reload;
 
     var config = {
-	      server: {
-	          baseDir: ""
-	      },
-	      tunnel: true,
-	      host: 'localhost',
-	      port: 9000,
-	      logPrefix: "Frontend_Devil"
-	  };
+        server: {
+            baseDir: "./"
+        },
+        tunnel: true,
+        host: 'localhost',
+        port: 9000,
+        logPrefix: "Frontend_Devil"
+	};
 
     var path = {
-        build: { //Тут мы укажем куда складывать готовые после сборки файлы
+        build: {
             html:  '',
             js:    'assets/js/',
             css:   'assets/css/',
             img:   'assets/images/'
         },
-        src: { //Пути откуда брать исходники
+        src: {
             html:  'templates/*.jade',
             js: [
                 'assets/js/source/*.js'
@@ -41,13 +46,13 @@ var gulp        = require('gulp'),
             ],
             img:   'assets/images/source*.*'
         },
-        watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
+        watch: {
             html:  'templates/*.jade',
             js:    'assets/js/source/*.js',
             style: 'assets/style/**/**/*.*',
             img:   'assets/images/source*.*'
         },
-        clean: ''
+        clean: './'
     };
 
     gulp.task('html:build', function () {
@@ -66,33 +71,67 @@ var gulp        = require('gulp'),
     });
 
     gulp.task('style:build', function () {
-	    gulp.src(path.src.style) //Выберем наш main.scss
-	          .pipe(sourcemaps.init()) //То же самое что и с js
-	          .pipe(sass()) //Скомпилируем
-	          //.pipe(prefixer()) //Добавим вендорные префиксы
-	          //.pipe(cssmin()) //Сожмем
-	          .pipe(sourcemaps.write())
-	          .pipe(gulp.dest(path.build.css)) //И в build
-	          .pipe(reload({stream: true}));
+	    gulp.src(path.src.style)
+            .pipe(sourcemaps.init())
+            .pipe(sass())
+            .pipe(prefixer())
+            //.pipe(cssmin()) //Сожмем
+            //.pipe(cssdeclsort({order: 'smacss'}))
+
+            .pipe(cssbeautify())
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest(path.build.css)) 
+            .pipe(reload({stream: true}));
 	});
+
+    gulp.task('js:build', function () {
+        gulp.src(path.src.js)
+            .pipe(rigger())
+            .pipe(sourcemaps.init())
+            .pipe(uglify())
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest(path.build.js))
+            .pipe(reload({stream: true}));
+    });
+
+    gulp.task('image:build', function () {
+        gulp.src(path.src.img)
+            .pipe(imagemin({
+                progressive: true,
+                svgoPlugins: [{removeViewBox: false}],
+                use: [pngquant()],
+                interlaced: true
+            }))
+            .pipe(gulp.dest(path.build.img))
+            .pipe(reload({stream: true}));
+    });
 
     gulp.task('build', [
         'html:build',
         'style:build',
+        'js:build',
+        'image:build'
     ]);
 
     gulp.task('watch', function(){
-      watch([path.watch.html], function(event, cb) {
-          gulp.start('html:build');
-      });
-      watch([path.watch.style], function(event, cb) {
-          gulp.start('style:build');
-      });
+        watch([path.watch.html], function(event, cb) {
+            gulp.start('html:build');
+        });
+        watch([path.watch.style], function(event, cb) {
+            gulp.start('style:build');
+        });
+        watch([path.watch.js], function(event, cb) {
+            gulp.start('js:build');
+        });
   	});
 
-  	gulp.task('webserver', function () {
-	    browserSync(config);
-	});
+    gulp.task('webserver', function () {
+        browserSync(config);
+    });
+
+    gulp.task('clean', function (cb) {
+        rimraf(path.clean, cb);
+    });
 
 	gulp.task('default', ['build', 'webserver', 'watch']);
     //gulp.task('default', ['build', 'webserver', 'watch']);

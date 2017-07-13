@@ -1,8 +1,54 @@
 footer.footer
-	.footer-nav
-		a.footer-link(href='', ng-click="$root.modal.contact = !$root.modal.contact; trackEvent('footer-contact')") Contact
-		a.footer-link(href='http://www.nike.com/us/en_us/sfg/mens-tops-sizing-chart', ng-click="trackEvent('footer-sizing')") Sizing Information
-		a.footer-link(href='', ng-click="$root.modal.care = !$root.modal.care; trackEvent('footer-care');") Care Instructions
-		a.footer-link(href='', ng-click="$root.modal.orderstatus = !$root.modal.orderstatus; trackEvent('footer-orderstatus')") Order Status & Returns
-		a.footer-link(href='http://www.nike.com/', ng-click="trackEvent('footer-store')") Nike Store
-	p.footer-legal © 2017 Nike, Inc. All Rights Reserved
+	.container
+		.footer-logo
+			img(src='assets/template/images/logo-white.png ', alt='')
+		.row
+			.col-sm-6.col-md-4.col-lg-3
+				
+		
+			.col-sm-6.col-md-4.col-lg-3
+				
+				.row
+
+					.col-lg-6
+
+						ul.footer-menu
+							li
+								a(href='') Главная
+							li
+								a(href='') О компании
+							li
+								a(href='') Каталог саженцев
+							li
+								a(href='') Наши работы
+							li
+								a(href='') Отзывы
+							li
+								a(href='') Статьи
+							li
+								a(href='') Контакты 
+					.col-lg-6
+						ul.footer-menu
+							li
+								a(href='') Саженцы плодово-ягодные
+							li
+								a(href='') Саженцы ягодных культур 
+							li
+								a(href='') Саженцы винограда
+							li
+								a(href='') Саженцы роз
+			// 
+			.col-md-4.col-lg-2
+				.footer-contacts
+					.fc.fc-phone (343) 200-75-77 df
+					.fc.fc-mail info@info.com
+					a.fc.fc-map(href='') Куда доставляем?
+					.fc.fc-clock
+						| Работаем  с 
+						br
+						| 9.00 до 20.00
+			// 
+			.col-lg-4
+				
+			// 
+	// container

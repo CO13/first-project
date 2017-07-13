@@ -1,0 +1,17 @@
+
+.footer {
+	background-color: #2b2a29;
+}
+.footer-menu {
+	list-style: none;
+	padding: 0;
+
+	li {
+		a {
+			&:hover {
+				color: $green;
+				text-decoration: none;
+			}
+		}
+	}
+}
