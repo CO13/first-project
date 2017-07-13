@@ -13,13 +13,24 @@ header.header
 				.row
 					
 					.col-xl-6
-
+						ul.head-links
+							li
+								i.icon-in
+								a(href="#" title="Войти") Войти
+								a(href="#" title="Регистрация") Регистрация  
+							li
+								i.icon-clock
+								span 
+									Ежедневно: с  9:00 до 20:00
+								
 						
 					// 
 
 					.col-xl-6
-
-						a.phone(href='#') (343) 200-75-77
+						h5
+							span (343) 
+							| 200-75-77
+						a(href="#" title="Заказать звонок") Заказать звонок
 					// 
 
 				.form-search
@@ -35,9 +46,14 @@ header.header
 				//.form-search
 			// 
 			.col-lg-3
-
-				a.header-cart(href='')
-					span 15
+				.header-cart
+					a#cart(href='#')
+						span.icon-cart
+						span.cart-qty 1
+						strong Корзина
+						span.cart-price 26 082
+						
+								span.cart-price__symbol руб.
 			// 
 	
 		nav.navbar.navbar-toggleable-sm.md-nav

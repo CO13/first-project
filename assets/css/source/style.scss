@@ -3,9 +3,15 @@
 @import "bootstrap/bootstrap-reboot";
 @import "bootstrap/bootstrap-grid";
 
+@import "variables/variables";
 @import "mixins/mixins";
 @import "conf";
 @import "reset";
 @import "components/header";
 @import "components/footer";
 @import "components/modal";
+
+body {
+    background: $backgroundColor url("../images/top-background.png") top center no-repeat;
+    background-size: 100%;
+}

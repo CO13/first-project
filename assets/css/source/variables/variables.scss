@@ -1,0 +1,38 @@
+
+/*_____ Colors  _____*/
+$backgroundColor: #e7f4f2;
+
+
+/*_____ Icons  _____*/
+.icon-arrow-down:before {
+  content: "\e900";
+  color: #aaa;
+}
+.icon-arrow-left:before {
+  content: "\e902";
+  color: #626262;
+}
+.icon-arrow-right:before {
+  content: "\e903";
+  color: #626262;
+}
+.icon-cart:before {
+  content: "\e904";
+  color: #3391c7;
+}
+.icon-check:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-clock:before {
+  content: "\e906";
+  color: #b7bbc2;
+}
+.icon-in:before {
+  content: "\e90b";
+  color: #b7bbc2;
+}
+.icon-search:before {
+  content: "\e90f";
+  color: #b7bbc2;
+}

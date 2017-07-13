@@ -38,18 +38,15 @@ var gulp        = require('gulp'),
         },
         src: {
             html:  'templates/*.jade',
-            js: [
-                'assets/js/source/*.js'
-            ],
-            style: [
-              'assets/css/source/*.scss'
-            ],
+            js:    'assets/js/source/*.js',
+            style: 'assets/css/source/*.scss',
             img:   'assets/images/source*.*'
         },
         watch: {
-            html:  'templates/*.jade',
+            html1:  'templates/*.jade',
+            html2:  'templates/**/*.jade',
             js:    'assets/js/source/*.js',
-            style: 'assets/style/**/**/*.*',
+            style: 'assets/css/source/*.scss',
             img:   'assets/images/source*.*'
         },
         clean: './'
@@ -80,7 +77,7 @@ var gulp        = require('gulp'),
 
             .pipe(cssbeautify())
             .pipe(sourcemaps.write())
-            .pipe(gulp.dest(path.build.css)) 
+            .pipe(gulp.dest(path.build.css))
             .pipe(reload({stream: true}));
 	});
 
@@ -114,7 +111,10 @@ var gulp        = require('gulp'),
     ]);
 
     gulp.task('watch', function(){
-        watch([path.watch.html], function(event, cb) {
+        watch([path.watch.html1], function(event, cb) {
+            gulp.start('html:build');
+        });
+        watch([path.watch.html2], function(event, cb) {
             gulp.start('html:build');
         });
         watch([path.watch.style], function(event, cb) {
@@ -134,4 +134,3 @@ var gulp        = require('gulp'),
     });
 
 	gulp.task('default', ['build', 'webserver', 'watch']);
-
